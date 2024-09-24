@@ -1,0 +1,8 @@
+OBJETIVO 1º:
+	- Separar a un fichero distinto la clase articulo (Articulo.py)
+	- Separar a un fichero distinto las operaciones con la BBDD y el articulo (ArticuloService.py)
+	- Separar a un fichero distinto la interfaz de usuario y llamar desde ahí a los elementos pertinentes (Main.py)
+
+OBJETIVO 2º:
+	- Sistema de ventas... (Hora de pensar)
+<3
