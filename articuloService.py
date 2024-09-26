@@ -1,6 +1,8 @@
 from articulo import Articulo
 Articulo()
 
+from main import conectar_db
+conectar_db()
 
 # Menú de opciones
 def menu():
