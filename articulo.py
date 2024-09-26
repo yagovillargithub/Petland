@@ -1,4 +1,5 @@
-import pyodbc
+from main import conectar_db
+conectar_db()
 
 class Articulo:
     def __init__(self, id=None, nombre=None, descripcion=None, precio=None, stock=None):

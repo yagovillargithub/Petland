@@ -1,3 +1,5 @@
+import pyodbc
+
 # Conexión a la base de datos
 def conectar_db():
     conn = pyodbc.connect(

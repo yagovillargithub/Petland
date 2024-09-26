@@ -1,6 +1,7 @@
 from articulo import Articulo
 Articulo()
 
+
 # Menú de opciones
 def menu():
     while True:
