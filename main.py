@@ -13,7 +13,11 @@ def menu():
         print("3. Actualizar artículo")
         print("4. Eliminar artículo")
         print("5. Realizar venta")
-        print("6. Salir")
+        print("6. Exportar artículos a Excel")
+        print("7. Importar artículos desde Excel")
+        print("8. Exportar ventas a Excel")
+        print("9. Importar ventas desde Excel")
+        print("10. Salir")
         opcion = input("Elige una opción: ")
 
         if opcion == "1":
@@ -62,7 +66,22 @@ def menu():
                 print("Artículo no encontrado.")
 
         elif opcion == "6":
+            archivo = input("Ingresa el nombre del archivo Excel para exportar (ejemplo: backup.xlsx): ")
+            articulo_service.exportar_articulos_a_excel(archivo)
+
+        elif opcion == "7":
+            archivo = input("Ingresa el nombre del archivo Excel para importar (ejemplo: backup.xlsx): ")
+            articulo_service.importar_articulos_desde_excel(archivo)
+
+        elif opcion == "8":
+            archivo = input("Ingresa el nombre del archivo Excel para exportar ventas (ejemplo: ventas_backup.xlsx): ")
+            articulo_service.exportar_ventas_a_excel(archivo)
+
+        elif opcion == "9":
+            archivo = input("Ingresa el nombre del archivo Excel para importar ventas (ejemplo: ventas_backup.xlsx): ")
+            articulo_service.importar_ventas_desde_excel(archivo)
+
+        elif opcion == "10":
             break
 
 menu()
-
