@@ -63,34 +63,7 @@ class ArticuloService:
         conn.commit()
         conn.close()
         print("Artículo eliminado exitosamente.")
-    
-    # Realizar venta de un artículo
-    def realizar_venta(self, cantidad, articulo):
-        # Verificar si hay suficiente stock
-        if articulo.stock >= cantidad:
-            conn = self.conectar_db()
-            cursor = conn.cursor()
-    
-            # Reducir stock
-            nuevo_stock = articulo.stock - cantidad
-            cursor.execute("""
-                UPDATE Articulo
-                SET stock = ?
-                WHERE id = ?
-            """, (nuevo_stock, articulo.id))
-    
-            # Insertar la venta en la tabla 'Venta'
-            cursor.execute("""
-                INSERT INTO Venta (id_articulo, cantidad)
-                VALUES (?, ?)
-            """, (articulo.id, cantidad))
-    
-            conn.commit()
-            conn.close()
-    
-            print(f"Venta realizada. {cantidad} unidades vendidas. Stock restante: {nuevo_stock}")
-        else:
-            print("No hay suficiente stock para realizar la venta.")
+
 
     # Exportar artículos a un archivo Excel
     def exportar_articulos_a_excel(self, archivo):
