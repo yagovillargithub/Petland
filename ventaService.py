@@ -87,11 +87,26 @@ class VentaService:
         print(f"Venta realizada exitosamente con un total de {total}.")
 
     # Calcular precio total (puedes ajustar según tu lógica)
+
     def calcular_total(self):
-        total_articulos = sum(item['precio'] * item['cantidad'] for item in self.articulos)
-        total_con_descuento = total_articulos - self.descuento
-        total_final = total_con_descuento
-        return total_final
+        """
+        Calcula el precio total de todas las ventas en la base de datos.
+        """
+        conn = self.conectar_db()
+        cursor = conn.cursor()
+
+        # Consulta SQL para sumar el total de todas las ventas
+        cursor.execute("SELECT SUM(total) FROM Venta")
+        resultado = cursor.fetchone()
+        conn.close()
+
+        # Si el resultado es None, significa que no hay ventas
+        if resultado and resultado[0] is not None:
+            return resultado[0]
+        return 0  # Retorna 0 si no hay ventas
+
+
+
 
     # Leer ventas realizadas
     def leer_ventas(self):
@@ -117,7 +132,10 @@ class VentaService:
                 self.realizar_venta()
 
             elif opcion == "2":
-                print(f"Total: {self.calcular_total()}")
+
+                total_ventas = self.calcular_total()
+                print(f"El precio total de todas las ventas es: {total_ventas}")
+
 
             elif opcion == "3":
                 ventas = self.leer_ventas()
